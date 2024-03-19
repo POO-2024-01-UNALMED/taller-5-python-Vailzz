@@ -1,3 +1,4 @@
+
 import zooAnimales.animal as animal
 
 class Reptil(animal.Animal):
@@ -6,7 +7,8 @@ class Reptil(animal.Animal):
     iguanas : int = 0
     serpientes : int = 0
     listado : list = []
-        
+    
+    
     def __init__(self, nombre: str | None = None, edad: int | None = None, habitat: str | None = None, genero: str | None = None, color_escamas : str | None = None, largo_cola : int | None = None) -> None:
         super().__init__(nombre, edad, habitat, genero)
         self._color_escams = color_escamas
@@ -16,7 +18,8 @@ class Reptil(animal.Animal):
     
     def movimiento(self) -> str:
         return "reptar"
-        
+    
+    
     @classmethod
     def crearIguana(cls, nombre : str, edad : int, genero : str):
         cls.iguanas += 1
@@ -55,3 +58,4 @@ class Reptil(animal.Animal):
         return len(cls.listado)
     
     pass
+

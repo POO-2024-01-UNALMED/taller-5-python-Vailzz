@@ -1,4 +1,3 @@
-
 from zooAnimales.animal import Animal
 
 class Zoologico:
@@ -37,4 +36,3 @@ class Zoologico:
     self._zonas = zonas
 
   pass
-

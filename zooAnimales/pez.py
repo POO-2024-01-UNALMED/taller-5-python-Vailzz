@@ -32,7 +32,6 @@ class Pez(animal.Animal):
         nuevo_Bacalao = Pez(nombre, edad, "oceano",genero,"gris",6)
         return nuevo_Bacalao
 
-    # Getters y Setters
     
 
     def getColorEscamas(self) -> str:
@@ -60,3 +59,4 @@ class Pez(animal.Animal):
         return len(cls.listado)
     
     pass
+

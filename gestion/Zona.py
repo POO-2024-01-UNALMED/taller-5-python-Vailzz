@@ -1,7 +1,6 @@
 from typing import Any
 from zooAnimales.animal import Animal
 from gestion.zoologico import Zoologico
-
 class Zona:
     
   def __init__(self, nombre : str | None = None,zoologico : Zoologico | None = None,animales : list | None = None):
@@ -31,3 +30,4 @@ class Zona:
     return self._zoologico
   
   pass
+

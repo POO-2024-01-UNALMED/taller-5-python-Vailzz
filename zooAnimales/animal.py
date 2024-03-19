@@ -1,6 +1,7 @@
 
 class Animal:
 
+
   __Total_Animales: int = 0
 
 
@@ -16,6 +17,7 @@ class Animal:
     self._genero = genero
     self._zona = zona
     Animal.__Total_Animales += 1
+
 
   def __str__(self) -> str:
     return f"Mi nombre es {self._nombre} , tengo una edad de {self._edad}, habito en {self._habitat} y mi genero es {self._genero}"
@@ -35,6 +37,7 @@ class Animal:
 
   def movimiento(self) -> str:
     return "desplazarse"
+
 
   def getNombre(self) -> str | None:
     return self._nombre
@@ -75,3 +78,4 @@ class Animal:
     cls.__Total_Animales = total
 
   pass
+

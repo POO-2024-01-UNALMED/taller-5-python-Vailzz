@@ -28,7 +28,6 @@ class Mamifero(animal.Animal):
         nuevo_Leon = Mamifero(nombre, edad, "selva",genero,True,4)
         return nuevo_Leon
 
-    # Getters y Setters
     
     def isPelaje(self) -> bool:
         return self._pelaje

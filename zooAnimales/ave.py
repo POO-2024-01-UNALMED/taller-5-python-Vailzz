@@ -1,7 +1,9 @@
+
 import zooAnimales.animal as animal
 
 class Ave(animal.Animal):
-        
+    
+    
     halcones : int = 0
     aguilas : int = 0
     listado : list = []
