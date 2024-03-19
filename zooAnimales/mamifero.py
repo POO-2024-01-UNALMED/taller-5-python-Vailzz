@@ -1,57 +1,43 @@
 
-import zooAnimales.animal as animal
+from zooAnimales.animal import Animal
+class Mamifero(Animal):
+    caballos=0
+    leones=0
+    _listado=[]
 
-class Mamifero(animal.Animal):
-    
-    
-    caballos : int = 0
-    leones : int = 0
-    listado : list = []
-    
-    
-    def __init__(self, nombre: str | None = None, edad: int | None = None, habitat: str | None = None, genero: str | None = None, pelaje : bool = False,patas : int | None = None) -> None:
-        super().__init__(nombre, edad, habitat, genero)
-        self._pelaje = pelaje
-        self._patas = patas
-        Mamifero.listado.append(self)
-    
+    def __init__(self,nombre=None,edad=0,habitat=None,genero=None,pelaje=False,patas=0):
+        super().__init__(nombre,edad,habitat,genero)
+        self._pelaje=pelaje
+        self._patas=patas
+        Mamifero._listado.append(self)
+        Animal.totalAnimales+=1
     
     @classmethod
-    def crearCaballo(cls, nombre : str, edad : int, genero : str):
-        cls.caballos += 1
-        nuevo_Caballo = Mamifero(nombre, edad, "pradera",genero,True,4)
-        return nuevo_Caballo
-    
+    def crearCaballo(cls,nombre,edad,genero,):
+        cls.caballos+=1
+        return Mamifero(nombre,edad,"selva",genero,True,4)
     @classmethod
-    def crearLeon(cls, nombre : str, edad : int, genero : str):
-        cls.leones += 1
-        nuevo_Leon = Mamifero(nombre, edad, "selva",genero,True,4)
-        return nuevo_Leon
+    def crearLeon(cls,nombre,edad,genero,):
+        cls.leones+=1
+        return Mamifero(nombre,edad,"pradera",genero,True,4)
 
+    @classmethod
+    def cantidadMamiferos(cls):
+        return len(cls._listado)
     
-    def isPelaje(self) -> bool:
-        return self._pelaje
-    
-    def setPelaje(self, pelaje: bool) -> None:
-        self._pelaje = pelaje
-    
-    def getPatas(self) -> int:
+    def getPatas(self):
         return self._patas
-    
-    def setPatas(self, patas: int) -> None:
-        self._patas = patas
-    
-    @classmethod
-    def get_total_caballo(cls) -> int:
-        return cls.caballos
-    
-    @classmethod
-    def get_total_leon(cls) -> int:
-        return cls.leones
-    
-    @classmethod
-    def get_total_animales(cls) -> int:
-        return len(cls.listado)
-    
-    pass
+    def setPatas(self, patas):
+        self._patas=patas
+    def isPelaje(self):
+        return self._pelaje
+    def setPelaje(self, pelaje):
+        self._pelaje=pelaje
 
+    @classmethod
+    def getListado(cls):
+        return cls._listado
+    @classmethod
+    def setListado(cls,listado):
+        cls._listado=[]
+        cls._listado=listado

@@ -1,55 +1,42 @@
 
-import zooAnimales.animal as animal
+from zooAnimales.animal import Animal
+class Ave(Animal):
+    halcones=0
+    aguilas=0
+    _listado=[]
 
-class Ave(animal.Animal):
+    def __init__(self,nombre=None,edad=0,habitat=None,genero=None,colorPlumas=None):
+        super().__init__(nombre,edad,habitat,genero)
+        self._colorPlumas=colorPlumas
+        Ave._listado.append(self)
+        Animal.totalAnimales+=1
     
-    
-    halcones : int = 0
-    aguilas : int = 0
-    listado : list = []
-    
-    
-    def __init__(self, nombre: str | None = None, edad: int | None = None, habitat: str | None = None, genero: str | None = None, color_pluma : str | None = None) -> None:
-        super().__init__(nombre, edad, habitat, genero)
-        self._color_pluma = color_pluma
-        Ave.listado.append(self)
-    
-    
-    def movimiento(self) -> str:
+    def movimiento():
         return "volar"
     
-    
     @classmethod
-    def crearHalcon(cls, nombre : str, edad : int, genero : str):
-        cls.halcones += 1
-        nuevo_Halcon = Ave(nombre, edad, "montanas",genero,"cafe glorioso")
-        return nuevo_Halcon
-    
+    def crearHalcon(cls,nombre,edad,genero,):
+        cls.halcones+=1
+        return Ave(nombre,edad,"montanas",genero,"cafe glorioso")
     @classmethod
-    def crearAguila(cls, nombre : str, edad : int, genero : str):
-        cls.aguilas += 1
-        nueva_Aguila = Ave(nombre, edad, "montanas",genero,"blanco y amarillo")
-        return nueva_Aguila
+    def crearAguila(cls,nombre,edad,genero,):
+        cls.aguilas+=1
+        return Ave(nombre,edad,"montanas",genero,"blanco y amarillo")
+
+    @classmethod
+    def cantidadAves(cls):
+        return len(cls._listado)
+    
+    def getColorPlumas(self):
+        return self._colorPlumas
+    def setColorPiel(self, colorPlumas):
+        self._colorPlumas=colorPlumas
 
     
-    def getColorPlumas(self) -> str:
-        return self._color_pluma
-    
-
-    def setColorPlumas(self, color_pluma: str) -> None:
-        self._color_pluma = color_pluma
-    
     @classmethod
-    def get_total_halcones(cls) -> int:
-        return cls.halcones
-    
+    def getListado(cls):
+        return cls._listado
     @classmethod
-    def get_total_aguilas(cls) -> int:
-        return cls.aguilas
-    
-    @classmethod
-    def get_total_animales(cls) -> int:
-        return len(cls.listado)
-    
-    pass
-
+    def setListado(cls,listado):
+        cls._listado=[]
+        cls._listado=listado

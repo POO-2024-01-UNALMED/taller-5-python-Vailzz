@@ -1,62 +1,46 @@
 
-import zooAnimales.animal as animal
+from zooAnimales.animal import Animal
+class Pez(Animal):
+    salmones=0
+    bacalaos=0
+    _listado=[]
 
-class Pez(animal.Animal):
+    def __init__(self,nombre=None,edad=0,habitat=None,genero=None,colorEscamas=None,cantidadAletas=0):
+        super().__init__(nombre,edad,habitat,genero)
+        self._colorEscamas=colorEscamas
+        self._cantidadAletas=cantidadAletas
+        Pez._listado.append(self)
+        Animal.totalAnimales+=1
     
-    
-    salmones : int = 0
-    bacalaos : int = 0
-    listado : list = []
-    
-    
-    def __init__(self, nombre: str | None = None, edad: int | None = None, habitat: str | None = None, genero: str | None = None, color_escamas : str | None = None, cantidad_aletas : int | None = None) -> None:
-        super().__init__(nombre, edad, habitat, genero)
-        self._color_escamas = color_escamas
-        self._cantidad_aletas = cantidad_aletas
-        Pez.listado.append(self)
-    
-    
-    def movimiento(self) -> str:
+    def movimiento():
         return "nadar"
     
-    
     @classmethod
-    def crearSalmon(cls, nombre : str, edad : int, genero : str):
-        cls.salmones += 1
-        nuevo_Salmon = Pez(nombre, edad, "oceano",genero,"rojo",6)
-        return nuevo_Salmon
-    
+    def crearSalmon(cls,nombre,edad,genero,):
+        cls.salmones+=1
+        return Pez(nombre,edad,"oceano",genero,"rojo",6)
     @classmethod
-    def crearBacalao(cls, nombre : str, edad : int, genero : str):
-        cls.bacalaos += 1
-        nuevo_Bacalao = Pez(nombre, edad, "oceano",genero,"gris",6)
-        return nuevo_Bacalao
+    def crearBacalao(cls,nombre,edad,genero,):
+        cls.bacalaos+=1
+        return Pez(nombre,edad,"oceano",genero,"gris",6)
 
+    @classmethod
+    def cantidadPeces(cls):
+        return len(cls._listado)
     
-
-    def getColorEscamas(self) -> str:
-        return self._color_escamas
-    
-    def setColorEscamas(self, color_escams: str) -> None:
-        self._color_escams = color_escams
-    
-    def getCantidadAletas(self) -> int:
-        return self._cantidad_aletas
-    
-    def setCantidadAletas(self, cantidad_aletas: int) -> None:
-        self._cantidad_aletas = cantidad_aletas
+    def getColorEscamas(self):
+        return self._colorEscamas
+    def setColorEscamas(self, colorEscamas):
+        self._colorEscamas=colorEscamas
+    def getCantidadAletas(self):
+        return self._cantidadAletas
+    def setCantidadAletas(self, cantidadAletas):
+        self._cantidadAletas=cantidadAletas
     
     @classmethod
-    def get_total_salmon(cls) -> int:
-        return cls.salmones
-    
+    def getListado(cls):
+        return cls._listado
     @classmethod
-    def get_total_bacalao(cls) -> int:
-        return cls.bacalaos
-    
-    @classmethod
-    def get_total_animales(cls) -> int:
-        return len(cls.listado)
-    
-    pass
-
+    def setListado(cls,listado):
+        cls._listado=[]
+        cls._listado=listado

@@ -1,33 +1,35 @@
-from typing import Any
-from zooAnimales.animal import Animal
-from gestion.zoologico import Zoologico
-class Zona:
-    
-  def __init__(self, nombre : str | None = None,zoologico : Zoologico | None = None,animales : list | None = None):
-    self._nombre = nombre
-    self._animales = animales if animales is not None else []
-    self._zoologico = zoologico
-    
-  def agregarAnimales(self, animal : Animal):
-    self._animales.append(animal)
-    
-  def cantidadAnimales(self):
-    return len(self._animales)
-    
-  def getNombre(self) -> str | None:
-    return self._nombre
-    
-  def setNombre(self, nombre : str) -> None:
-    self._nombre = nombre
-    
-  def getAnimales(self) -> list:
-    return self._animales
-    
-  def setAnimales(self, animales : list) -> None:
-    self._animales = animales
-    
-  def getZoo(self):
-    return self._zoologico
-  
-  pass
 
+class Zoologico():
+    _zonas=[]
+
+    def __init__(self,nombre=None, ubicacion=None):
+        self._nombre=nombre
+        self._ubicacion=ubicacion
+    
+    def agregarZonas(self,zona):
+        self._zonas.append(zona)
+    
+    def cantidadTotalAnimales(self):
+        cantidad=0
+        for i in range(len(self._zonas)):
+            cantidad+= self._zonas[i].cantidadAnimales()
+        return cantidad
+    
+    def __str__(self):
+        return self._nombre
+
+    def getNombre(self):
+        return self._nombre
+    def setNombre(self, nombre):
+        self._nombre=nombre
+    def getUbicacion(self):
+        return self._ubicacion
+    def setUbicacion(self, ubicacion):
+        self._ubicacion=ubicacion
+
+    @classmethod
+    def getZona(cls):
+        return cls._zonas
+    @classmethod
+    def setZona(cls, zonas):
+        cls._zonas=zonas

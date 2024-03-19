@@ -1,61 +1,49 @@
 
-import zooAnimales.animal as animal
+from zooAnimales.animal import Animal
+class Anfibio(Animal):
+    ranas=0
+    salamandras=0
+    _listado=[]
 
-class Anfibio(animal.Animal):
-    
-    
-    ranas : int = 0
-    salamandras : int = 0
-    listado : list = []
-    
-    
-    def __init__(self, nombre: str | None = None, edad: int | None = None, habitat: str | None = None, genero: str | None = None, color_piel : str | None = None, venenoso : bool | None = None) -> None:
-        super().__init__(nombre, edad, habitat, genero)
-        self._color_piel = color_piel
-        self._venenoso = venenoso
-        Anfibio.listado.append(self)
-    
-    
-    def movimiento(self) -> str:
+    def __init__(self,nombre=None,edad=0,habitat=None,genero=None,colorPiel=None,venenoso=False):
+        super().__init__(nombre,edad,habitat,genero)
+        self._colorPiel=colorPiel
+        self._venenoso=venenoso
+        Anfibio._listado.append(self)
+        Animal.totalAnimales+=1
+        
+    def movimiento():
         return "saltar"
-    
-    
+
     @classmethod
-    def crearRana(cls, nombre : str, edad : int, genero : str):
-        cls.ranas += 1
-        nueva_Rana = Anfibio(nombre, edad, "selva",genero,"rojo",True)
-        return nueva_Rana
-    
+    def crearRana(cls,nombre,edad,genero,):
+        cls.ranas+=1
+        return Anfibio(nombre,edad,"selva",genero,"rojo",True)
     @classmethod
-    def crearSalamandra(cls, nombre : str, edad : int, genero : str):
-        cls.salamandras += 1
-        nueva_Salamandra = Anfibio(nombre, edad, "selva",genero,"negro y amarillo",False)
-        return nueva_Salamandra
+    def crearSalamandra(cls,nombre,edad,genero,):
+        cls.salamandras+=1
+        return Anfibio(nombre,edad,"selva",genero,"negro y amarillo",False)
+
+    @classmethod
+    def cantidadAnfibios(cls):
+        return len(cls._listado)
 
     
-    def getColorPiel(self) -> str | None:
-        return self._color_piel
     
-    def setColorPiel(self, color_piel: str) -> None:
-        self._color_piel = color_piel
-    
-    def isVenenoso(self) -> bool | None:
+    def getColorPiel(self):
+        return self._colorPiel
+    def setColorPiel(self, colorPiel):
+        self._colorPiel=colorPiel
+    def isVenenoso(self):
         return self._venenoso
+    def setVenenoso(self, venenoso):
+        self._venenoso=venenoso
     
-    def setVenenoso(self, venenoso: bool) -> None:
-        self._venenoso = venenoso
-
-    @classmethod
-    def get_total_rana(cls) -> int:
-        return cls.ranas
     
     @classmethod
-    def get_total_salamandra(cls) -> int:
-        return cls.salamandras
-    
+    def getListado(cls):
+        return cls._listado
     @classmethod
-    def get_total_animales(cls) -> int:
-        return len(cls.listado)
-    
-    pass
-
+    def setListado(cls,listado):
+        cls._listado=[]
+        cls._listado=listado
